@@ -19,7 +19,14 @@ io.on("connection", (socket) => {
     socket.emit("Bienvenida", "Bienvenido al chat.")
 
     socket.on("mensaje", (mensaje) => {
-        console.log("Mensaje recibido: ", mensaje)
+        //console.log("Mensaje recibido: ", mensaje)
+        
+        // A todos los que estén conectados
+        //  "nombre evento", parámetro
+        //io.emit("mensaje", mensaje)
+
+        // A todos excepto a mí
+        socket.broadcast.emit("mensaje", mensaje)
     })
 })
 
