@@ -11,6 +11,8 @@ const io = new Server(server, {
     }
 })
 
+const mensajes = []
+
 io.on("connection", (socket) => {
     console.log("Cliente conectado.")
     
@@ -20,13 +22,16 @@ io.on("connection", (socket) => {
 
     socket.on("mensaje", (mensaje) => {
         //console.log("Mensaje recibido: ", mensaje)
-        
+        mensajes.push(mensaje)
+
         // A todos los que estén conectados
         //  "nombre evento", parámetro
-        //io.emit("mensaje", mensaje)
+        io.emit("mensaje", mensajes)
+
+        
 
         // A todos excepto a mí
-        socket.broadcast.emit("mensaje", mensaje)
+        //socket.broadcast.emit("mensaje", mensajes)
     })
 })
 
