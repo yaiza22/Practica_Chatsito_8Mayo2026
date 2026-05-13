@@ -18,7 +18,7 @@ io.on("connection", (socket) => {
     
     // Mensaje a todos
     //io.emit("Bienvenida", "Hola")
-    socket.emit("Bienvenida", "Bienvenido al chat.")
+    socket.emit("mensaje", mensajes)
 
     socket.on("mensaje", (mensaje) => {
         //console.log("Mensaje recibido: ", mensaje)
